@@ -2,6 +2,7 @@
 import argparse
 import os
 from pathlib import Path
+import time
 from openai import OpenAI
 from dotenv import load_dotenv
 load_dotenv()
@@ -37,6 +38,7 @@ class DocumentationGenerator:
         markdown_doc = ""
         try:
             if self.use_openai:
+                time.sleep(10)
                 response = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=[
@@ -66,6 +68,7 @@ class DocumentationGenerator:
         markdown_html = ""
         try:
             if self.use_openai:
+                time.sleep(10)
                 response = client.chat.completions.create(
                     model="gpt-4o-mini",
                     messages=[
@@ -128,6 +131,7 @@ class DocumentationGenerator:
         prompt += "It must have Documentation Title and must have Description in it"
 
         # Call OpenAI API
+        time.sleep(10)
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
